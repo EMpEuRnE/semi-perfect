@@ -1,0 +1,10 @@
+import { Buffer } from 'node:buffer';
+import { readFileSync } from 'node:fs';
+import assert from 'node:assert/strict';
+import console from 'node:console';
+import ts from 'typescript';
+const js=ts.transpileModule(readFileSync('src/lib/auth/redirects.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2020}}).outputText;
+const {getSafeInternalPath}=await import('data:text/javascript;base64,'+Buffer.from(js).toString('base64'));
+for(const value of ['https://example.test','//example.test','/\\example.test','/\n/example.test','/\t/example.test',null,'javascript:alert(1)']) assert.equal(getSafeInternalPath(value,'/profile'),'/profile');
+for(const value of ['/missions','/rewards?success=1','/profile#name']) assert.equal(getSafeInternalPath(value,'/profile'),value);
+console.log('10 redirect validation assertions completed.');

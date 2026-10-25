@@ -1,0 +1,24 @@
+Changes relative to supplied Move-and-Earn.zip
+
+.env.example
+CHANGESET.txt
+DEMO_HANDOFF.md
+FINAL_QA_REPORT.md
+VALIDATION.txt
+next.config.ts
+package.json
+src/app/(user)/rewards/[rewardId]/page.tsx
+src/app/(user)/rewards/loading.tsx
+src/app/(user)/rewards/page.tsx
+src/app/actions/brand.ts
+src/app/actions/rewards.ts
+src/app/brand/loading.tsx
+src/app/error.tsx
+src/app/globals.css
+src/components/shared/brand-dashboard.tsx
+src/lib/env.ts
+src/lib/supabase/proxy.ts
+supabase/migrations/202610250004_idempotent_redemption.sql
+supabase/migrations/202610250005_nonnegative_adjustments.sql
+tests/database.mjs
+tests/environment.mjs

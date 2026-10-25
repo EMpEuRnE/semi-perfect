@@ -1,0 +1,44 @@
+{
+  "name": "move-and-earn",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test:db": "node tests/database.mjs && node tests/daily-upgrade.mjs",
+    "check": "pnpm typecheck && pnpm lint && pnpm test:unit && pnpm test:db && pnpm build",
+    "test:http": "node tests/http.mjs",
+    "test:unit": "node tests/redirects.mjs && node tests/environment.mjs && node tests/brand-auth.mjs && node tests/campaign-authoring.mjs && node tests/daily-missions.mjs && node tests/demo-flow.mjs"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.57.4",
+    "lucide-react": "^0.468.0",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.11",
+    "@eslint/js": "^10.0.0",
+    "@next/eslint-plugin-next": "^16.0.0",
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^10.0.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "supabase": "^2.122.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.72.0"
+  }
+}
